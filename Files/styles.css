@@ -1,0 +1,133 @@
+body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    font-family: Arial, sans-serif;
+}
+
+.container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    background-color: white;
+    overflow: hidden;
+}
+
+#tnt-block {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.tnt-body {
+    width: 128px;
+    height: 192px;
+    background-color: #ff0000;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+.stripe {
+    position: absolute;
+    width: 100%;
+    height: 32px;
+    background-color: rgba(0, 0, 0, 0.2);
+}
+
+.stripe:first-child {
+    top: 32px;
+}
+
+.stripe:last-child {
+    bottom: 32px;
+}
+
+.tnt-body span {
+    color: white;
+    font-size: 48px;
+    font-weight: bold;
+    z-index: 10;
+}
+
+.wick {
+    position: absolute;
+    top: -64px;
+    left: 50%;
+    width: 4px;
+    height: 64px;
+    background-color: #8B4513;
+    transform-origin: bottom;
+    animation: wickWave 1s infinite alternate;
+}
+
+.wick-inner {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+    background-color: black;
+    animation: wickBurn 3s linear forwards;
+}
+
+.spark {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    width: 8px;
+    height: 8px;
+    background-color: #FFD700;
+    border-radius: 50%;
+    transform: translate(-50%, 50%);
+    animation: sparkMove 3s linear forwards;
+}
+
+#white-flash {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #FF8C00;
+    background-color: #FFFF00;
+    background-color: #FFFFFF;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.5s;
+}
+
+#final-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 36px;
+    font-weight: bold;
+    color: #333;
+    opacity: 0;
+    transition: opacity 1s;
+}
+
+@keyframes wickWave {
+    0% { transform: rotate(-10deg); }
+    100% { transform: rotate(10deg); }
+}
+
+@keyframes wickBurn {
+    0% { height: 100%; }
+    100% { height: 0%; }
+}
+
+@keyframes sparkMove {
+    0% { bottom: 0; }
+    100% { bottom: 100%; }
+}
+
+@keyframes explode {
+    0% { transform: translate(-50%, -50%) scale(1); }
+    50% { transform: translate(-50%, -50%) scale(1.1); }
+    100% { transform: translate(-50%, -50%) scale(1); opacity: 0; }
+}
